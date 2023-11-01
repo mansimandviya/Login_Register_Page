@@ -3,24 +3,26 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
     const[name, setName] = useState("");
     const[email, setEmail] = useState("");
     const[password, setPassword] = useState("");
+    const navigate = useNavigate();
 
     const handleSubmit =  (e) => {
-      e.preventDefault();
-      axios.post('http://127.0.0.1:8000/register', {name, email, password}, {
-        headers: {
-            'Content-Type': 'application/json',
-        }})
-      .then(result=> console.log(result))
+      e.preventDefault()
+      axios.post('http://127.0.0.1:8000/register', {name, email, password}) 
+      .then(result=> {console.log(result)
+      navigate('/login')
+      })
       .catch(err=> console.log(err))
-       };
+    }
 
   return (
     <Form onSubmit={handleSubmit}>
+      <h2> Register Page </h2>
       <Form.Group className="mb-3" controlId="formBasicUsername">
         <Form.Label>Username</Form.Label>
         <Form.Control type="text" placeholder="Enter username"  onChange={(e)=>setName(e.target.value)} />
