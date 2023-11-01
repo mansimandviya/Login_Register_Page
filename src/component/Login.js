@@ -18,7 +18,6 @@ const Login = () => {
       if(result.data === "Success"){
         navigate('/logout')
       }
-    navigate('/logout')
     })
     .catch(err=> console.log(err))
   }

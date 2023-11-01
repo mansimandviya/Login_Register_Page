@@ -7,7 +7,6 @@ const bodyParser = require('body-parser');
 
 
 const app = express();
-//app.use(express.json);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
@@ -35,6 +34,8 @@ app.post('/register', (req, res)=>{
     .then(students => res.json(students))
     .catch(err => res.json(err)) 
 })
+
+
 
 const PORT = 8000;
  
